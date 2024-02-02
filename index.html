@@ -1,0 +1,201 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi hoja de vida</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #fff;
+            color: #333;
+            position: relative;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+        h1{
+             text-align: center;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th:focus, td:focus, li:focus {
+            outline: 2px solid #3498db;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 50%;
+           
+            position: absolute;
+            top: 0; /* Alinea la imagen en la parte superior */
+            right: 0; /* Alinea la imagen en la parte derecha */
+            margin: 10px; 
+        }
+
+        video {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px
+            ;
+        }
+        .miniatura {
+            max-width: 25%; /* Ajusta el ancho de la miniatura según tus necesidades */
+            height: auto;
+        }
+
+        .container {
+            display: flex;
+            
+        }
+        header {
+            position: relative; /* Asegura que la imagen se posicione correctamente en relación con el encabezado */
+        }
+    </style>
+</head>
+<body>
+    <header tabindex="1">
+        
+        <h1 >Diana Carolina Bravo Sandoval</h1>
+        <img src="carolinabravo.jpg" alt=" Foto de tamaño carnet de carolina bravo, tiene el cabello negro con una blusa rosada,ligeramente sonriendo" 
+        style="width: 150px; height: auto">
+        <p>Datos Personales:</p>
+        <ul>
+            <li tabindex="2"><strong>Fecha de NacimientO:</strong> 18 de marzo, 2001</li>
+            <li tabindex="3"><strong>Cédula:</strong> 1726602053</li>
+            <li tabindex="4"><strong>Dirección:</strong> Guamaní, La Perla, calle S52D, Quito-Ecuador</li>
+            <li tabindex="5"><strong>Teléfono:</strong> (+593) 979201607</li>
+            <li tabindex="6"><strong>Correo Electrónico:</strong> carolinabravo946@gmail.com</li>
+        </ul>
+    </header>
+
+    <section tabindex="7">
+        <h2>Estudios</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Grado o Título</th>
+                    <th>Institución</th>
+                    <th>Año de Inicio</th>
+                    <th>Año de Finalización</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr >
+                    <td tabindex="8">Educación Inicial</td>
+                    <td tabindex="9">Unidad Educativa Particular Vincent Van Gogh</td>
+                    <td tabindex="10">2005</td>
+                    <td tabindex="11">2011</td>
+                </tr>
+                <tr >
+                    <td tabindex="12">Educación Inicial Media-Bachillerato General Unificado</td>
+                    <td tabindex="13">Unidad Educativa Fiscal "Quito</td>
+                    <td tabindex="14">2011</td>
+                    <td tabindex="15">2018</td>
+                </tr>
+                <tr >
+                    <td tabindex="16">Educación Superior-Ingeniería de Software</td>
+                    <td tabindex="17">Escuela Politécnica Nacional</td>
+                    <td tabindex="18">2018</td>
+                    <td tabindex="19">Hasta la Actualidad</td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </section>
+
+    <section tabindex="20">
+        <h2>Experiencia Profesional</h2>
+        <ul>
+            <li tabindex="21">
+                <strong>Atención al Cliente y Ventas</strong> - "Auto decoraciones Ambato" - 6 meses
+                <ul tabindex="22">
+                    <li>Cumplir con metas de ventas establecidas y trabajar para aumentar los ingresos. </li>
+                </ul>
+            </li>
+            <li tabindex="23">
+                <strong>Atención al Cliente y Ventas</strong> - "Centro comercial Chiriyacu" - 6 meses
+                <ul tabindex="24">
+                    <li>Cumplir con metas de ventas establecidas. </li>
+                </ul>
+            </li>
+           
+        </ul>
+    </section>
+    <div class="container">
+    <section tabindex="25">
+        <h2>Video de Presentación</h2>
+        <video controls tabindex="26" controls class="miniatura">
+            <source src="presentacion.mp4" type="video/mp4" >
+            Tu navegador no soporta el elemento de video.
+        </video>
+    </section>
+
+    <section tabindex="27">
+        <h2>Referencias Personales</h2>
+        <ul>
+            <li tabindex="28">Ing. Jaime Guerrero - Jefe de Control de Calidad Empresa AkzoNobel - 0994603473</li>
+            <li tabindex="29">Sñr. Galo Sandoval - Gerente Auto Decoraciones Ambato - 09999554983</li>
+            <li tabindex="30">MSc. Andrés Bravo - Jefe TIC - 0982375980</li>
+           
+        </ul>
+    </section>
+    </div>
+
+    
+    <script>
+        const cells = document.querySelectorAll('th, td,li');
+
+        cells.forEach(cell => {
+            cell.addEventListener('keydown', e => {
+                if (e.key === 'ArrowDown' || e.key === 'ArrowUp' || e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+                    e.preventDefault();
+                    const index = Array.from(cells).indexOf(cell);
+                    let targetIndex;
+
+                    switch (e.key) {
+                        case 'ArrowDown':
+                            targetIndex = index + cells.length / 4;
+                            break;
+                        case 'ArrowUp':
+                            targetIndex = index - cells.length / 4;
+                            break;
+                        case 'ArrowLeft':
+                            targetIndex = index - 1;
+                            break;
+                        case 'ArrowRight':
+                            targetIndex = index + 1;
+                            break;
+                    }
+
+                    const targetCell = cells[Math.min(cells.length - 1, Math.max(0, targetIndex))];
+                    targetCell.focus();
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
